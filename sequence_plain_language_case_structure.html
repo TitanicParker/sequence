@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the Argument Works — A Plain-Language Walkthrough</title>
+<meta name="description" content="A plain-language explanation of the case structure: how an integrated lower-limb presentation may have been compressed, separated into two tracks, and later defended through the record produced by that separation.">
+<style>
+:root{
+  --bg:#f4f5f7;
+  --paper:#ffffff;
+  --ink:#181a1f;
+  --muted:#626a76;
+  --rule:#d8dde4;
+  --soft:#f7f8fa;
+  --accent:#59697b;
+  --accent-soft:#edf1f5;
+  --warm:#7b6255;
+  --warm-soft:#f7f1ed;
+  --purple:#655986;
+  --purple-soft:#f2eff8;
+  --green:#355d4b;
+  --green-soft:#eef6f1;
+  --dark:#181b20;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.6;
+}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:26px 18px 70px}
+.topnav{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+.topnav a{text-decoration:none;border:1px solid var(--rule);background:#fff;border-radius:999px;padding:8px 12px;font-size:13px;color:#3f4752}
+.hero{background:var(--paper);border:1px solid var(--rule);border-radius:24px;padding:30px 30px 28px;margin-bottom:16px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{margin:0;max-width:920px;font-size:clamp(33px,5vw,57px);line-height:1.02;letter-spacing:-.045em}
+.lede{margin:15px 0 0;max-width:900px;color:var(--muted);font-size:18px}
+.thesis{margin-top:22px;background:var(--dark);color:#fff;border-radius:16px;padding:18px 20px;font-size:18px;line-height:1.55}
+.thesis b{color:#fff}
+.guide{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.guide div{border:1px solid var(--rule);border-radius:13px;padding:12px 13px;background:#fafbfc;font-size:13px}
+.guide b{display:block;margin-bottom:3px;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.section-title{margin:30px 2px 12px}
+.section-title h2{margin:0;font-size:27px;letter-spacing:-.025em}
+.section-title p{margin:4px 0 0;color:var(--muted)}
+.flow{display:flex;flex-direction:column;gap:0}
+.step{position:relative;background:var(--paper);border:1px solid var(--rule);border-radius:18px;padding:22px 22px 20px}
+.step + .connector{height:38px;display:flex;align-items:center;justify-content:center;color:#8a919b;font-size:25px}
+.step-head{display:grid;grid-template-columns:46px minmax(0,1fr);gap:13px;align-items:start}
+.num{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent);font-weight:900;font-size:16px}
+.step h3{margin:1px 0 5px;font-size:22px;line-height:1.18;letter-spacing:-.02em}
+.step .plain{margin:0;color:#30353c;font-size:16px}
+.explain-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:16px}
+.box{border:1px solid var(--rule);border-radius:13px;background:var(--soft);padding:13px 14px}
+.box b{display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.075em;color:var(--muted)}
+.box p{margin:0;font-size:14px;color:#343a43}
+.pivot{border-left:6px solid var(--purple)}
+.pivot .num{background:var(--purple-soft);color:var(--purple)}
+.reassign{border:2px solid #baa397;background:var(--warm-soft)}
+.reassign .num{background:#efe2db;color:var(--warm)}
+.confirm{border:2px solid #9bb6a8;background:var(--green-soft)}
+.confirm .num{background:#dfeee5;color:var(--green)}
+.question{margin-top:16px;border-left:4px solid var(--accent);padding:10px 12px 10px 14px;background:#f8fafc;border-radius:0 11px 11px 0;font-weight:700}
+.question small{display:block;margin-bottom:3px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.reassign .question{border-left-color:var(--warm);background:#fffaf7}
+.reassign .question small{color:var(--warm)}
+.pivot .question{border-left-color:var(--purple);background:#faf9fd}
+.pivot .question small{color:var(--purple)}
+.confirm .question{border-left-color:var(--green);background:#f8fcf9}
+.confirm .question small{color:var(--green)}
+.chain{margin:17px 0 0;padding:15px 17px;border-radius:13px;background:var(--dark);color:#fff;font-weight:750;line-height:1.6}
+.claims{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.claim-card{background:#fff;border:1px solid var(--rule);border-radius:16px;padding:18px}
+.claim-card h3{margin:0 0 8px;font-size:18px}
+.claim-card p{margin:0;color:#3c434c}
+.claim-card.not{background:#fafbfc}
+.final{margin-top:18px;background:var(--dark);color:#fff;border-radius:20px;padding:24px}
+.final .eyebrow{color:#bcc4ce}
+.final h2{margin:0 0 10px;font-size:29px;line-height:1.15;letter-spacing:-.025em}
+.final p{margin:8px 0;color:#e2e6ea}
+.final strong{color:#fff}
+.source-note{margin-top:16px;border:1px solid var(--rule);border-radius:15px;padding:16px 18px;background:#fff;color:var(--muted);font-size:13px}
+.source-note strong{color:var(--ink)}
+.footer-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.footer-links a{text-decoration:none;background:#fff;border:1px solid var(--rule);border-radius:10px;padding:10px 13px;font-size:13px}
+@media (max-width:760px){
+  .hero{padding:23px 20px}
+  .guide,.explain-grid,.claims{grid-template-columns:1fr}
+  .step{padding:18px 16px}
+  .step-head{grid-template-columns:40px minmax(0,1fr);gap:10px}
+  .num{width:38px;height:38px}
+  .step h3{font-size:20px}
+  .lede{font-size:16px}
+}
+@media print{
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .topnav,.footer-links{display:none}
+  .hero,.step,.claim-card,.source-note,.final{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="topnav" aria-label="Sequence pages">
+    <a href="index.html">Sequence overview</a>
+    <a href="sequence_evidenced_clinical_record.html">Detailed evidence layer</a>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Plain-language case structure</div>
+    <h1>The easiest way to understand the argument</h1>
+    <p class="lede">This page deliberately takes the long way around. It does not assume the reader knows neurology, medical records, or the earlier analysis. It explains one question at a time, in the order in which the problem appears to have developed.</p>
+
+    <div class="thesis"><b>The argument in one paragraph:</b> the patient originally arrived with one connected lower-limb story. The hospital received a shortened version of that story. Neurology then found a dystonic-looking lower limb that could have caused the missing pieces to be brought back together. Instead, the remaining foot and leg material was treated as potentially separate and possibly neuropathic. From that point on, later tests, treatments and explanations largely operated inside that separation. Years later, when the separation was challenged, the accumulated record produced by that pathway was itself used to defend it.</div>
+
+    <div class="guide">
+      <div><b>What this is about</b>How information changed as it moved through the clinical pathway.</div>
+      <div><b>What this is not about</b>Claiming that neuropathy was impossible, or that every episode of foot pain was dystonia.</div>
+      <div><b>The central question</b>What evidence justified separating the lower-limb story, and where was that separation later tested?</div>
+    </div>
+  </header>
+
+  <section class="section-title">
+    <h2>Walk through it slowly</h2>
+    <p>The structure becomes easier to see if each change is treated as a separate step.</p>
+  </section>
+
+  <div class="flow">
+    <article class="step" id="step1">
+      <div class="step-head"><div class="num">1</div><div><h3>Start with one connected presentation</h3><p class="plain">Before the hospital compressed anything, the GP picture put the feet, gait, toe-clawing, muscle tension, increased tone, movement difficulty and functional decline in the same clinical story. The GP did not need to know the final diagnosis. The important point is that these features arrived together.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>Simple version</b><p>The starting question was broad: what explains this whole pattern?</p></div><div class="box"><b>Why it matters</b><p>If information starts together and later becomes separated, the separation itself needs an evidential reason.</p></div></div>
+      <div class="question"><small>The question to keep in mind</small>At what point did one lower-limb story become two different clinical problems?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step" id="step2">
+      <div class="step-head"><div class="num">2</div><div><h3>The hospital received a narrower version</h3><p class="plain">The admission précis concentrated on the features that looked most like Parkinsonism: trouble initiating movement, stiffness, increased tone and cogwheeling. Much of the foot, toe and tension context was no longer visible in that short description.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>This is compression</b><p>A short referral summary is not necessarily wrong. But shortening changes which facts are immediately prominent.</p></div><div class="box"><b>The risk</b><p>Once a case is introduced through a narrower frame, later information may be interpreted as an addition to that frame rather than part of the original problem.</p></div></div>
+      <div class="question"><small>Plain-language question</small>Did the clinician later recover what the précis had left out, or did the shortened version continue to shape the case?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step pivot" id="step3">
+      <div class="step-head"><div class="num">3</div><div><h3>Neurology then discovered something the précis had not explained</h3><p class="plain">On examination, Neurology itself identified a striking lower-limb gait that looked dystonic. That finding did not come from the patient trying to diagnose himself. It was generated by the neurological examination.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>Why this is the pivot</b><p>The new finding could have been used to reopen the earlier story and ask whether the feet, toes, tension, gait and abnormal posture belonged together.</p></div><div class="box"><b>The easy test</b><p>If the finding mattered, where was it carried forward? If it did not matter, why was it specifically recorded as dystonic-looking?</p></div></div>
+      <div class="question"><small>The decompression question</small>Did the new dystonic-looking finding cause the clinician to go back and rebuild the full lower-limb picture?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step reassign" id="step4">
+      <div class="step-head"><div class="num">4</div><div><h3>Instead, the unresolved material begins to change shape in the record</h3><p class="plain">This is the part of the argument that depends on provenance. The patient's basic distinction was that foot pain and persistent leg tension felt different. The later narrative contains additional language: “out of the picture,” “leg pain,” “burning,” and “markedly divorced.” The issue is not simply whether those words sound odd. The issue is where each proposition came from and what work it did.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>What must be separated</b><p>Patient words, clinician observations, and clinician interpretations are different kinds of evidence. They should not silently become interchangeable.</p></div><div class="box"><b>Why wording matters</b><p>Language such as “burning” and “leg pain” is closer to a neuropathic description than the original distinction between foot pain and leg tension.</p></div></div>
+      <div class="question"><small>Provenance question</small>Which of these words came from the patient, which came from the clinician, and what contemporaneous questioning supports them?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step reassign" id="step5">
+      <div class="step-head"><div class="num">5</div><div><h3>“They feel different” becomes “they may be completely separate”</h3><p class="plain">A patient can know that two sensations feel different. That is useful information. But different sensations do not automatically mean different diseases. The important step is the move from a difference in experience to a possible separation in pathology.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>What the patient can establish</b><p>“This pain feels different from this tension.”</p></div><div class="box"><b>What requires clinical reasoning</b><p>“These two experiences probably come from separate pathological processes.”</p></div></div>
+      <div class="question"><small>The missing bridge</small>What additional history, examination, test or treatment response justified moving from difference to independence?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step reassign" id="step6">
+      <div class="step-head"><div class="num">6</div><div><h3>A tentative neuropathy idea now has somewhere to put the leftover symptoms</h3><p class="plain">Peripheral neuropathy was not an absurd idea. The record itself presented it tentatively: “perhaps” a secondary peripheral neuropathy. The concern is not that the possibility was considered. The concern is whether that possibility was ever adequately established before it became a durable way of organising the case.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>The fair starting point</b><p>Neuropathy could be considered as a differential diagnosis.</p></div><div class="box"><b>The harder question</b><p>What positive evidence showed that the disputed foot/tension/toe phenomenon was actually neuropathic?</p></div></div>
+      <div class="question"><small>Freeze time here</small>At the moment neuropathy was first proposed, what evidence existed before the label itself began influencing later decisions?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step" id="step7">
+      <div class="step-head"><div class="num">7</div><div><h3>The hypothesis starts generating its own downstream investigations</h3><p class="plain">Once possible neuropathy became part of the case, later questions naturally followed from it. PARK9 entered through “the neuropathy question.” Fabry testing later asked whether a rare disorder could explain an overlap between Parkinsonism and peripheral neuropathy.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>Important distinction</b><p>Looking for a cause of neuropathy is not the same as proving that neuropathy is present.</p></div><div class="box"><b>Why this can mislead</b><p>A large amount of investigation can accumulate around a premise without independently validating the premise that generated it.</p></div></div>
+      <div class="question"><small>The category question</small>Which investigation tested whether the lower-limb phenomenon was neuropathy, rather than merely testing what might cause neuropathy if it existed?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step" id="step8">
+      <div class="step-head"><div class="num">8</div><div><h3>Later evidence is interpreted inside the inherited two-track model</h3><p class="plain">From this point, the case can be understood as having two tracks: Parkinsonism on one side and separate foot or neuropathic pain on the other. Later symptoms and treatments are then interpreted through those inherited categories.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>Pregabalin</b><p>If it helps, that can look consistent with neuropathic pain. If it only partly helps, the neuropathy idea can still remain.</p></div><div class="box"><b>Dopaminergic treatment</b><p>If Sinemet helps the pain, that can be explained as Parkinson's changing the experience of pain without necessarily changing its cause.</p></div></div>
+      <div class="question"><small>The falsifiability question</small>What result would actually have caused the neuropathy explanation to be materially downgraded or abandoned?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step" id="step9">
+      <div class="step-head"><div class="num">9</div><div><h3>Later history can make the old pathway look more coherent than it originally was</h3><p class="plain">This is where chronology matters. Pregabalin entered through GP treatment of severe foot pain. Years later, the rebuttal described it as having been introduced for neuropathic pain “in part” to spare further Sinemet increase. That may be a genuine later recollection of purpose, but the question is whether that purpose existed at the time and where it was recorded.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>Not an accusation</b><p>The point is not to say a rationale was invented. The point is to ask when it arose and what contemporaneous evidence supports it.</p></div><div class="box"><b>Why chronology matters</b><p>A later explanation can make separate historical events look like parts of one deliberate plan even when the earlier documents do not show that structure.</p></div></div>
+      <div class="question"><small>The provenance test</small>Who decided pregabalin was part of a Sinemet-sparing strategy, when was that decision made, and where is it documented at the time?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step pivot" id="step10">
+      <div class="step-head"><div class="num">10</div><div><h3>By 2025, the disputed classification is already built into the language of the rebuttal</h3><p class="plain">When the complaint challenges the neuropathy framing, the response does not first return to the original fork and ask whether the disputed symptoms were neuropathic. It begins downstream, speaking of the patient's “peripheral neuropathic pain symptomatologies” and then explaining their possible causes and management.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>The subtle problem</b><p>The conclusion being challenged is already embedded in the nouns used to answer the challenge.</p></div><div class="box"><b>Why Fabry matters here</b><p>Fabry can show that clinicians investigated possible causes within the neuropathy formulation. It does not independently prove the original classification.</p></div></div>
+      <div class="question"><small>The reset question</small>When the complaint arrived, was the original classification reconsidered from the information available before it was made?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step pivot" id="step11">
+      <div class="step-head"><div class="num">11</div><div><h3>The record is then asked to prove the soundness of the record</h3><p class="plain">The 2025 response directs the reviewer back through the accumulated letters to understand the clinician's reasoning. Detailed records are normally valuable. But here the complaint is about how the categories inside those records were created and carried forward.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>Why a linear review can fail</b><p>If an early classification shapes later letters, simply reading those letters in order can reproduce the same classification rather than test it.</p></div><div class="box"><b>What an independent review must do</b><p>Return to earlier information states and ask what was known before each important classification was made.</p></div></div>
+      <div class="question"><small>The loop</small>If the complaint is that a classification became embedded in the correspondence, can the correspondence alone independently validate that classification?</div>
+    </article>
+
+    <div class="connector">↓</div>
+
+    <article class="step confirm" id="step12">
+      <div class="step-head"><div class="num">12</div><div><h3>The later PRKN result matters, but only in a limited way</h3><p class="plain">The later genetic result confirms a Parkin-related disease involving Parkinsonism and dystonia. It does not prove that every historical episode of foot pain, burning, corn or callus was dystonia. It matters because the competing lower-limb phenomenon actually observed in 2017 belongs to the confirmed disease phenotype.</p></div></div>
+      <div class="explain-grid"><div class="box"><b>What it supports</b><p>The dystonic strand was clinically real and ultimately part of the confirmed disease.</p></div><div class="box"><b>What it does not support</b><p>A retrospective claim that every painful foot symptom had one cause.</p></div></div>
+      <div class="question"><small>The retrospective question</small>Knowing the later diagnosis does not decide 2017. It makes the unanswered 2017 integration question more important.</div>
+    </article>
+  </div>
+
+  <section class="section-title">
+    <h2>So what is the argument, exactly?</h2>
+    <p>It is easier to understand by separating what is alleged from what is not alleged.</p>
+  </section>
+
+  <div class="claims">
+    <article class="claim-card"><h3>The argument being made</h3><p>A provisional neuropathy explanation appears to have become structurally privileged before the disputed lower-limb phenomenon was independently established as neuropathic. The original integrated presentation and the later dystonic-looking observation were not clearly brought back together. Once the two-track model existed, later investigations and treatments largely operated downstream of it, and the accumulated record was later used to defend the pathway.</p></article>
+    <article class="claim-card not"><h3>The argument not being made</h3><p>It is not necessary to say that neuropathy was impossible, that every pain was dystonia, that treatment decisions had no legitimate safety considerations, or that anyone deliberately falsified the record. Those stronger claims are not required to expose the process question.</p></article>
+  </div>
+
+  <div class="chain">Original integrated presentation → narrower hospital précis → dystonic-looking lower limb discovered → opportunity to reintegrate → residual symptoms instead separated → possible neuropathy becomes an organising category → later investigations test within that category → later treatment responses are interpreted through it → later explanations make the pathway appear increasingly coherent → the accumulated record is used to defend the original pathway.</div>
+
+  <section class="final">
+    <div class="eyebrow">The easiest final question</div>
+    <h2>Where is the evidential bridge?</h2>
+    <p>The whole argument can eventually be reduced to one request, but only after the reader has understood the steps above:</p>
+    <p><strong>Show the evidence that justified turning an integrated lower-limb presentation into two separate clinical problems, and show where that separation was later tested rather than merely inherited.</strong></p>
+    <p>If that bridge can be identified, it should be examined on its merits. If it cannot, the large amount of medicine performed downstream does not by itself supply the missing bridge.</p>
+  </section>
+
+  <aside class="source-note">
+    <strong>Method note.</strong> This page explains the case structure in ordinary language. It intentionally does not try to prove negligence, diagnose every historical pain episode, or substitute for expert movement-disorders evidence. The detailed evidence page should be used to check the underlying dates, quotations and source provenance. The structure here follows the supplied litigation analysis, which emphasises building the argument from information state, dystonic observation, provenance, the difference-versus-independence step, the neuropathy bridge, downstream investigation, treatment interpretation and later documentary self-validation.
+  </aside>
+
+  <div class="footer-links">
+    <a href="index.html">Back to sequence overview</a>
+    <a href="sequence_evidenced_clinical_record.html">Open the detailed evidence</a>
+  </div>
+</main>
+</body>
+</html>
