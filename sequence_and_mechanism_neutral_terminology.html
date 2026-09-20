@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sequence and Mechanism — 2017–2026</title>
+<style>
+  :root{
+    --bg:#f5f6f8;
+    --paper:#ffffff;
+    --ink:#17191d;
+    --muted:#626873;
+    --line:#d8dce3;
+    --soft:#eef1f5;
+    --accent:#3d4a5c;
+    --embezzle:#7b4a3d;
+    --embezzle-bg:#f7efec;
+    --fork:#3f5e6a;
+    --loop:#655486;
+    --endpoint:#355c4a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.48;
+  }
+  .page{
+    max-width:1040px;
+    margin:0 auto;
+    padding:28px 18px 56px;
+  }
+  header{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:24px 26px;
+    margin-bottom:18px;
+  }
+  h1{
+    margin:0 0 8px;
+    font-size:clamp(28px,4vw,44px);
+    line-height:1.08;
+    letter-spacing:-.03em;
+  }
+  .subtitle{
+    margin:0;
+    color:var(--muted);
+    font-size:16px;
+  }
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+  }
+  .pill{
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:5px 9px;
+    font-size:12px;
+    background:#fff;
+  }
+  .pill.em{border-color:#c9aaa0;background:var(--embezzle-bg)}
+  .flow{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+  }
+  .stage{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px 20px;
+  }
+  .stage h2{
+    font-size:18px;
+    margin:0 0 8px;
+    letter-spacing:-.01em;
+  }
+  .stage p{margin:7px 0}
+  .stage ul{margin:8px 0 0 19px;padding:0}
+  .stage li{margin:4px 0}
+  .tag{
+    display:inline-block;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:700;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .arrow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:38px;
+    color:#7d8490;
+    font-size:26px;
+    user-select:none;
+  }
+  .fork{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .branch{
+    background:var(--soft);
+    border:1px solid var(--line);
+    border-radius:13px;
+    padding:14px;
+  }
+  .branch h3{margin:0 0 6px;font-size:15px}
+  .branch.reintegrate{border-left:5px solid var(--fork)}
+  .branch.close{border-left:5px solid var(--embezzle)}
+  .evidential reassignment{
+    border:2px solid #b48779;
+    background:var(--embezzle-bg);
+  }
+  .evidential reassignment h2{color:#60362c}
+  .chain{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .chain-step{
+    background:rgba(255,255,255,.64);
+    border:1px solid #dcc7c0;
+    border-radius:12px;
+    padding:11px 13px;
+  }
+  .mini-arrow{
+    text-align:center;
+    color:#98756a;
+    font-size:21px;
+    line-height:1;
+  }
+  .loop{
+    border-left:6px solid var(--loop);
+  }
+  .endpoint{
+    border:2px solid #98b4a5;
+    background:#f0f6f2;
+  }
+  .endpoint h2{color:#244937}
+  .one-line{
+    background:#16191f;
+    color:#fff;
+    border-color:#16191f;
+  }
+  .one-line .tag{color:#b8bec8}
+  .one-line strong{color:#fff}
+  .note{
+    color:var(--muted);
+    font-size:13px;
+  }
+  .emphasis{
+    font-weight:760;
+  }
+  .controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:0 0 16px;
+  }
+  button{
+    appearance:none;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    border-radius:10px;
+    padding:10px 13px;
+    font:inherit;
+    cursor:pointer;
+  }
+  button:focus{outline:3px solid #c9d4e4;outline-offset:2px}
+  .compact .stage{padding:12px 14px}
+  .compact .arrow{height:26px}
+  .compact .stage p,.compact .stage li{font-size:14px}
+  footer{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:18px;
+    text-align:center;
+  }
+  @media(max-width:720px){
+    .fork{grid-template-columns:1fr}
+    .page{padding:16px 12px 36px}
+    header{padding:20px}
+  }
+  @media print{
+    body{background:#fff}
+    .page{max-width:none;padding:0}
+    .controls{display:none}
+    .stage,header{break-inside:avoid}
+    .arrow{height:28px}
+    footer{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="page" id="page">
+  <header>
+    <h1>How the sequence became self-reinforcing</h1>
+    <p class="subtitle">A systems view of compression, separation, evidential reassignment, path dependence, pain/distress, treatment interpretation, complaint response, and eventual PRKN/dystonia confirmation.</p>
+    <div class="legend" aria-label="Legend">
+      <span class="pill">Clinical sequence</span>
+      <span class="pill em">Evidential reassignment = information moves out of its original context and is later used with altered evidential weight</span>
+      <span class="pill">2017 → 2026</span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <button type="button" id="toggleDensity">Compact view</button>
+    <button type="button" id="printBtn">Print / Save as PDF</button>
+  </div>
+
+  <main class="flow">
+    <section class="stage">
+      <div class="tag">1 · GP trajectory</div>
+      <h2>The original problem is longitudinal</h2>
+      <p class="emphasis">Gait + initiation difficulty + muscle tension + increased tone + clawing/toes + worsening dexterity + functional deterioration.</p>
+      <p class="note">The question is not merely “is this Parkinsonism?” It is: what process explains the deteriorating movement disorder and the connected lower-limb history?</p>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage">
+      <div class="tag">2 · First compression</div>
+      <h2>Trajectory becomes a short hospital problem statement</h2>
+      <p><strong>Difficulty initiating movement + stiffness/tone + cogwheeling → assess Parkinsonism.</strong></p>
+      <p class="note">The omitted remainder does not cease to exist. It becomes something the eventual discharge synthesis must explain after the focused Parkinsonism investigation.</p>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage">
+      <div class="tag">3 · Neurology investigation</div>
+      <h2>Parkinsonism is investigated deeply — and the missing history is partly recovered</h2>
+      <ul>
+        <li>The long symptom trajectory is reconstructed.</li>
+        <li>The patient’s distinction between <strong>foot pain</strong> and persistent <strong>leg tension</strong> is recorded.</li>
+        <li>Neurology independently discovers a <strong>dystonic-looking lower-limb gait</strong>, described as “NOT FOOT DROP”.</li>
+      </ul>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage">
+      <div class="tag">4 · The fork</div>
+      <h2>The newly discovered dystonic sign creates a genuine choice</h2>
+      <div class="fork">
+        <div class="branch reintegrate">
+          <h3>Reintegrate</h3>
+          <p>Ask whether longstanding tension, foot/toe phenomena and the newly observed dystonic lower limb belong to the same young-onset Parkinsonism/dystonia phenotype.</p>
+        </div>
+        <div class="branch close">
+          <h3>Separate and close</h3>
+          <p>Complete the Parkinsonism work-up while assigning the residual lower-limb/foot material to another possible mechanism.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage evidential reassignment">
+      <div class="tag">5 · Evidential reassignment</div>
+      <h2>The residual material changes meaning as it crosses the fork</h2>
+      <div class="chain">
+        <div class="chain-step"><strong>Original:</strong> corns/callouses and foot pain are distinguished by the patient from persistent leg tension.</div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>Repackaged:</strong> “leg symptoms including corns and callouses and burning”.</div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>Patient distinction is given a new evidential function:</strong> “markedly divorced” no longer simply describes phenomenology; it helps make two separate disorders look natural.</div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>New destination:</strong> “perhaps a secondary peripheral neuropathy”, with alcohol available as a possible contributor.</div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>Genetic effect:</strong> the core phenotype points toward PRKN; PARK9 enters specifically through <em>“the neuropathy question”</em>.</div>
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage">
+      <div class="tag">6 · What remains available</div>
+      <h2>The record now contains two parallel explanatory tracks</h2>
+      <div class="fork">
+        <div class="branch">
+          <h3>Established track</h3>
+          <p>Parkinsonism → young-onset/genetic reasoning → dopaminergic treatment.</p>
+        </div>
+        <div class="branch">
+          <h3>Separate track</h3>
+          <p>Foot/leg pain → possible neuropathy → alcohol/other neuropathy causes.</p>
+        </div>
+      </div>
+      <p class="note">The dystonic observation remains in the record, but is not made the organising explanation for the lower-limb trajectory.</p>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage loop">
+      <div class="tag">7 · Eight years of path dependence</div>
+      <h2>New evidence is interpreted inside the partition</h2>
+      <p>Cramping, toe curling and abnormal walking can raise the possibility of <strong>OFF dystonia</strong>, while the painful foot phenomenon remains on the separate neuropathy pathway.</p>
+      <p><strong>If dopamine improves pain:</strong> Parkinsonism may simply be changing the experience of pain from another cause.</p>
+      <p><strong>If Lyrica appears to help:</strong> that report can be used to reinforce the neuropathic-pain explanation.</p>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage evidential reassignment">
+      <div class="tag">8 · Second evidential reassignment — the pain crisis</div>
+      <h2>Relief is detached from the conditions in which it was reported</h2>
+      <div class="chain">
+        <div class="chain-step"><strong>Actual context:</strong> extreme pain + major psychological distress + high-dose Lyrica already present + Sinemet/dopaminergic treatment also present + multiple changing variables.</div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>Patient reports some relief on Lyrica.</strong></div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>Context fades:</strong> “I experienced relief while desperate and while several variables were changing” becomes closer to “Lyrica treated the neuropathic pain.”</div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>The report is then used retrospectively</strong> as support for the pre-existing neuropathy frame.</div>
+      </div>
+      <p class="note">The patient’s later clarification: at that level of pain, even nonspecific or transient relief would have felt significant.</p>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage">
+      <div class="tag">9 · Contradictory signal</div>
+      <h2>Dopaminergic timing produces striking relief</h2>
+      <p>Sinemet timing and later Sinemet CR create an opportunity to reopen the original classification:</p>
+      <p class="emphasis">Was the lower-limb phenomenon itself dopamine-responsive dystonia?</p>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage loop">
+      <div class="tag">10 · The existing frame absorbs contradictory evidence</div>
+      <h2>The contradictory signal can be explained without reopening the original classification</h2>
+      <ul>
+        <li>Sinemet can improve the <em>experience</em> of pain whatever its cause → therefore response need not disprove neuropathy.</li>
+        <li>Lyrica had reportedly helped → therefore deterioration after reducing it can be used to support neuropathic pain.</li>
+        <li>The two treatments are clinically entangled, making any later assignment of causal weight difficult to isolate.</li>
+      </ul>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage evidential reassignment">
+      <div class="tag">11 · Complaint-stage repetition of the same compression</div>
+      <h2>The mechanism occurs again at the level of explanation</h2>
+      <div class="chain">
+        <div class="chain-step"><strong>Original complaint question:</strong> how did an observed dystonic lower-limb sign plus a longstanding trajectory become separated and remain uninvestigated as dystonia while neuropathy became the standing explanation?</div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>Compressed answerable question:</strong> why was Sinemet not increased earlier? Was alcohol blamed exclusively? Was neuropathy considered reasonably?</div>
+        <div class="mini-arrow">↓</div>
+        <div class="chain-step"><strong>Result:</strong> downstream treatment decisions can be explained at length while the upstream classification event remains untouched.</div>
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage endpoint">
+      <div class="tag">12 · Endpoint</div>
+      <h2>PRKN + Parkinsonism + dystonia</h2>
+      <p>The later genetic result does not need to prove that every painful sensation was dystonia.</p>
+      <p class="emphasis">Its structural significance is that the disease ultimately identified includes the very phenomenon Neurology had already observed in the lower limb in 2017.</p>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage one-line">
+      <div class="tag">Whole mechanism</div>
+      <h2>Trajectory → compression → investigation → dystonia discovered → non-reintegration → evidential reassignment of the residual symptoms → neuropathy hypothesis → path-dependent interpretation → pain/distress/treatment signals reused inside that frame → contradictory Sinemet response absorbed → complaint compressed in the same manner → original fork remains unanswered.</h2>
+    </section>
+  </main>
+
+  <footer>Single-file HTML · self-contained · no external libraries</footer>
+</div>
+
+<script>
+(() => {
+  const root = document.getElementById('page');
+  const toggle = document.getElementById('toggleDensity');
+  const printBtn = document.getElementById('printBtn');
+  toggle.addEventListener('click', () => {
+    root.classList.toggle('compact');
+    toggle.textContent = root.classList.contains('compact') ? 'Comfortable view' : 'Compact view';
+  });
+  printBtn.addEventListener('click', () => window.print());
+})();
+</script>
+</body>
+</html>
