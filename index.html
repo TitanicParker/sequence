@@ -183,6 +183,37 @@
   .compact .arrow{height:26px}
   .compact .stage p,.compact .stage li{font-size:14px}
 
+  .reader-paths{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:12px;
+    margin:0 0 18px;
+  }
+  .reader-card{
+    display:block;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px 20px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+  .reader-card:hover{
+    transform:translateY(-1px);
+    box-shadow:0 8px 24px rgba(22,25,31,.07);
+    border-color:#b9c1cc;
+  }
+  .reader-card:focus{outline:3px solid #c9d4e4;outline-offset:2px}
+  .reader-card.start{
+    border:2px solid #7d8fa4;
+    background:#f7fafc;
+  }
+  .reader-card .tag{margin-bottom:5px}
+  .reader-card h2{margin:0 0 5px;font-size:19px;letter-spacing:-.01em}
+  .reader-card p{margin:0 0 11px;color:var(--muted);font-size:13px}
+  .reader-card .go{font-weight:800;font-size:13px}
+
   .detail-cta{
     margin-top:22px;
     background:var(--paper);
@@ -223,7 +254,7 @@
     text-align:center;
   }
   @media(max-width:720px){
-    .fork{grid-template-columns:1fr}
+    .fork,.reader-paths{grid-template-columns:1fr}
     .page{padding:16px 12px 36px}
     header{padding:20px}
   }
@@ -248,6 +279,21 @@
       <span class="pill">2017 → 2026</span>
     </div>
   </header>
+
+  <section class="reader-paths" aria-label="Choose how to read this case">
+    <a class="reader-card start" href="sequence_plain_language_case_structure.html" aria-label="Start with the plain-language case walkthrough">
+      <div class="tag">Start here</div>
+      <h2>Plain-language walkthrough</h2>
+      <p>The easiest way into the argument: one step at a time, with the significance of each transition explained before the next one is introduced.</p>
+      <span class="go">Open the walkthrough →</span>
+    </a>
+    <a class="reader-card" href="sequence_evidenced_clinical_record.html" aria-label="Open the detailed evidence layer">
+      <div class="tag">Evidence layer</div>
+      <h2>Detailed clinical record</h2>
+      <p>Source quotations, dates, CLIN references, documentary implications and context panels.</p>
+      <span class="go">Open the evidence →</span>
+    </a>
+  </section>
 
   <div class="controls">
     <button type="button" id="toggleDensity">Compact view</button>
