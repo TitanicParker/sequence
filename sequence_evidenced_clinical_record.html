@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sequence and Mechanism — Evidenced from the Clinical Record</title>
+<style>
+:root{
+  --bg:#f4f5f7;
+  --paper:#ffffff;
+  --ink:#17191d;
+  --muted:#616873;
+  --rule:#d7dce3;
+  --soft:#eef1f4;
+  --quote:#f8f9fb;
+  --context:#5a6778;
+  --reassign:#795d50;
+  --reassign-bg:#f7f1ed;
+  --signal:#665889;
+  --confirm:#365c4b;
+  --confirm-bg:#eef6f1;
+  --dark:#181b20;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.52;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 18px 60px}
+.hero{
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-radius:22px;
+  padding:26px 28px;
+  margin-bottom:16px;
+}
+h1{
+  margin:0 0 9px;
+  font-size:clamp(30px,4.3vw,48px);
+  line-height:1.04;
+  letter-spacing:-.035em;
+}
+.subtitle{margin:0;color:var(--muted);max-width:900px;font-size:16px}
+.method{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+.method div{
+  border:1px solid var(--rule);
+  border-radius:12px;
+  padding:11px 12px;
+  background:#fafbfc;
+  font-size:12px;
+}
+.method b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+.controls{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 16px}
+button{
+  border:1px solid var(--rule);
+  background:#fff;
+  color:var(--ink);
+  border-radius:10px;
+  padding:10px 13px;
+  font:inherit;
+  cursor:pointer;
+}
+button:focus{outline:3px solid #cbd7e8;outline-offset:2px}
+.flow{display:flex;flex-direction:column}
+.stage{
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-radius:17px;
+  padding:19px 21px;
+}
+.stage h2{margin:0 0 8px;font-size:20px;letter-spacing:-.015em}
+.stage p{margin:7px 0}
+.tag{
+  display:inline-block;
+  color:var(--muted);
+  font-weight:800;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.085em;
+  margin-bottom:7px;
+}
+.arrow{
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#858c96;
+  font-size:25px;
+}
+.source-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:14px;
+}
+.quote-card{
+  background:var(--quote);
+  border:1px solid var(--rule);
+  border-radius:13px;
+  padding:14px 15px;
+  min-width:0;
+}
+.quote-card.full{grid-column:1/-1}
+.source-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:9px;
+}
+.source-label{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.065em;
+  font-weight:800;
+}
+.ref{
+  white-space:nowrap;
+  font:700 11px/1.35 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color:#49505a;
+  background:#fff;
+  border:1px solid var(--rule);
+  border-radius:7px;
+  padding:3px 6px;
+}
+blockquote{
+  margin:0;
+  padding:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:18px;
+  line-height:1.48;
+}
+blockquote.small{font-size:16px}
+.implication{
+  margin-top:13px;
+  border-left:4px solid var(--context);
+  padding:10px 12px 10px 14px;
+  background:#f8fafc;
+  border-radius:0 10px 10px 0;
+}
+.implication b{
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  color:var(--context);
+  margin-bottom:3px;
+}
+.compression{border-left:6px solid var(--context)}
+.reassignment{
+  border:2px solid #b8a095;
+  background:var(--reassign-bg);
+}
+.reassignment .implication{border-left-color:var(--reassign)}
+.reassignment .implication b{color:var(--reassign)}
+.signal{border-left:6px solid var(--signal)}
+.confirmation{
+  border:2px solid #9ab8a7;
+  background:var(--confirm-bg);
+}
+.confirmation .implication{border-left-color:var(--confirm)}
+.confirmation .implication b{color:var(--confirm)}
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:12px;
+}
+.split .panel{
+  border:1px solid var(--rule);
+  border-radius:12px;
+  padding:13px;
+  background:#fafbfc;
+}
+.panel h3{margin:0 0 6px;font-size:15px}
+.callout{
+  margin-top:14px;
+  padding:13px 15px;
+  border:1px solid var(--rule);
+  border-radius:12px;
+  background:#fff;
+}
+.callout strong{display:block;margin-bottom:4px}
+.sequence-line{
+  background:var(--dark);
+  color:#fff;
+  border-color:var(--dark);
+}
+.sequence-line h2{font-size:20px;line-height:1.5}
+.sequence-line .tag{color:#b8bec8}
+.note{font-size:13px;color:var(--muted)}
+.key{font-weight:760}
+.analysis-hidden .implication,.analysis-hidden .analysis-only{display:none}
+.compact .stage{padding:13px 15px}
+.compact .arrow{height:26px}
+.compact blockquote{font-size:16px}
+.compact .quote-card{padding:11px 12px}
+footer{
+  text-align:center;
+  margin-top:18px;
+  color:var(--muted);
+  font-size:12px;
+}
+@media(max-width:760px){
+  .source-grid,.split,.method{grid-template-columns:1fr}
+  .quote-card.full{grid-column:auto}
+  .wrap{padding:16px 12px 40px}
+  .hero{padding:20px}
+}
+@media print{
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .controls{display:none}
+  .hero,.stage,.quote-card{break-inside:avoid}
+  .arrow{height:27px}
+  footer{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="root">
+  <header class="hero">
+    <h1>The sequence, evidenced from the clinical record</h1>
+    <p class="subtitle">A documentary map of how a longitudinal presentation was compressed, how a dystonic lower-limb sign was recorded, how the residual lower-limb material was assigned a possible neuropathy explanation, and how that separation remained available to organise later interpretation.</p>
+    <div class="method" aria-label="Reading convention">
+      <div><b>Quotation</b>Source wording is reproduced in quotation marks with its clinical reference number.</div>
+      <div><b>Documentary implication</b>Interpretation is kept separate from the quoted record and stated neutrally.</div>
+      <div><b>Limit</b>Later PRKN/dystonia confirmation does not by itself prove that every historical episode of foot pain was dystonia.</div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <button type="button" id="toggleAnalysis">Hide documentary implications</button>
+    <button type="button" id="toggleDensity">Compact view</button>
+    <button type="button" id="printBtn">Print / Save as PDF</button>
+  </div>
+
+  <main class="flow">
+
+    <section class="stage">
+      <div class="tag">1 · GP trajectory — 29 June 2017</div>
+      <h2>The referral arrives as a deteriorating longitudinal problem</h2>
+      <div class="source-grid">
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">GP referral to AMU</span>
+            <span class="ref">CLIN-000856–000861</span>
+          </div>
+          <blockquote>“Over recent weeks It has become increasingly evident that he is having trouble initiating movements at times and also has marked stiffness and increased tone in both upper and lower limbs…”</blockquote>
+        </article>
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">GP referral to AMU</span>
+            <span class="ref">CLIN-000866–000881</span>
+          </div>
+          <blockquote>“Of late though he feels his dexterity is worse…”<br><br>“My concerns are that there are definite signs of increased tone here with abnormal gait and now affecting his employment and daily activities - ?parkinsonian or other underlying diagnosis but certainly seems to be deteriorating.”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The GP referral is not only a list of motor signs. It expressly presents recent deterioration, worsening dexterity, loss of function and an open diagnostic question.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage compression">
+      <div class="tag">2 · First compression — hospital referral field</div>
+      <h2>The longitudinal referral is reduced to a short neurological task</h2>
+      <div class="source-grid">
+        <article class="quote-card full">
+          <div class="source-head">
+            <span class="source-label">Hospital discharge source — referral field</span>
+            <span class="ref">CLIN-000940–000943</span>
+          </div>
+          <blockquote>“Reason: 39Y/O WITH DIFFICULTY INITIATING MOVEMENT, INCREASED TONE AND STIFFNESS IN ALL 4 LIMBS, COGWHEELING AT THE WRIST. PLEASE … ASSESS FOR NEURO OPINION AND ADVICE…”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The hospital referral field preserves the Parkinsonian signs but not the GP referral’s full trajectory, functional decline, employment impact, toe-clawing history or the explicit “parkinsonian or other underlying diagnosis” uncertainty.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage">
+      <div class="tag">3 · History recovered during admission</div>
+      <h2>The detailed neurology history restores the patient’s own distinction</h2>
+      <div class="source-grid">
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Neurology history</span>
+            <span class="ref">CLIN-000971–000976</span>
+          </div>
+          <blockquote>“the pain in the feet … reduced to a degree ‘out of the picture’ — however he continued to have the ‘leg tension’…”<br><br>“he began to realise that the foot pain and the leg tenston were not the same problem…”</blockquote>
+        </article>
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Neurology history</span>
+            <span class="ref">CLIN-000979–000985</span>
+          </div>
+          <blockquote>“this just made the tension worse…”<br><br>“Thereafter he started to notice that: ‘the legs would lift off the floor as I sat down’”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The record therefore contains a distinction between structural/painful foot problems and a persistent movement/tension phenomenon. That distinction is available to the clinician before the final impression is written.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage">
+      <div class="tag">4 · Neurology-generated finding</div>
+      <h2>A dystonic-looking lower-limb abnormality is directly observed</h2>
+      <div class="source-grid">
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Neurological examination</span>
+            <span class="ref">CLIN-001097–001100</span>
+          </div>
+          <blockquote>“The gait is strikingly abnormal.”<br><br>“He tends to walk almost with a footdrop appearance somewhat suggestive of a dystonic posture - NOT FOOT DROP.”</blockquote>
+        </article>
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Neurological examination</span>
+            <span class="ref">CLIN-001108–001115</span>
+          </div>
+          <blockquote>“Lead pipe rigidity bilaterally”<br><br>“Gross rigidity evident while walking - axial rigidity”<br><br>“LLL Kicks out like a foot drop -”<br><br>“Gross bradykinesia”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The dystonic-looking lower-limb sign is not merely part of the GP account or later retrospective reconstruction. It is an examination finding generated within Neurology during the admission.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage reassignment">
+      <div class="tag">5 · Evidential reassignment at discharge</div>
+      <h2>The residual lower-limb material is grouped under a possible separate explanation</h2>
+      <div class="source-grid">
+        <article class="quote-card full">
+          <div class="source-head">
+            <span class="source-label">Neurology impression</span>
+            <span class="ref">CLIN-001142–001149</span>
+          </div>
+          <blockquote>“The leg symptoms including corns and callouses and burning may have been completely separate or perhaps a secondary peripheral neuropathy perhaps in some … respect related to the significant original alcohol intake?”<br><br>“However he has in his own mind - markedly divorced the feelings of tension in the legs which was/is the predominant problem -from the ‘corns and callouses’ issues and Pains in the feet…”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The discharge impression preserves uncertainty — “may have been”, “perhaps”, “Not clear” — but it also creates a separate explanatory track: Parkinsonism on one side, possible peripheral neuropathy for residual leg/foot symptoms on the other. The patient’s distinction is now used within that separation.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage">
+      <div class="tag">6 · Genetic reasoning within the same document</div>
+      <h2>The core phenotype points toward PRKN; PARK9 enters through “the neuropathy question”</h2>
+      <div class="source-grid">
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">2017 genetic differential</span>
+            <span class="ref">CLIN-001520–001523</span>
+          </div>
+          <blockquote>“given … his very young age of onset; the akinetic rigidity; the lack of a Dominant family history; and the marked symmetry; as well as how cognitively excellent [Patient] is, there is a question of whether the indicators are that he does have a PRKN gene disorder (PARK 2)?”</blockquote>
+        </article>
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">2017 genetic differential</span>
+            <span class="ref">CLIN-001524–001525</span>
+          </div>
+          <blockquote>“Nevertheless aspects may point to rarer monogenic explanations such as PARK 6 or PARK7 or even PARK 9 (the neuropathy question).”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The record itself distinguishes the evidential routes: the principal young-onset phenotype generates the PRKN question; PARK9 is expressly linked to the neuropathy question.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage signal">
+      <div class="tag">7 · Independent specialist convergence — September 2017</div>
+      <h2>The second opinion also points to PARK2</h2>
+      <div class="source-grid">
+        <article class="quote-card full">
+          <div class="source-head">
+            <span class="source-label">Prof Daniel G. Healy — specialist review</span>
+            <span class="ref">CLIN-001741–001742</span>
+          </div>
+          <blockquote>“Thank you for asking me to see this man who I think probably has Park II and I would suggest testing that initially. If it is negative I would go on to test a panel.”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The later 2017 specialist opinion independently converges on the same PARK2/PRKN hypothesis. This does not determine the nature of every foot symptom, but it shows that PRKN was not a later invention.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage signal">
+      <div class="tag">8 · Early treatment-linked lower-limb signal — October 2017</div>
+      <h2>Medication withdrawal is contemporaneously reported to affect the feet and gait</h2>
+      <div class="source-grid">
+        <article class="quote-card full">
+          <div class="source-head">
+            <span class="source-label">Patient contemporaneous treatment-response email</span>
+            <span class="ref">CLIN-001770–001783</span>
+          </div>
+          <blockquote>“My walk is back together.”<br>“My legs are loose and limber.”<br><br>Four days into the treatment break: “I am feeling the tension building up, my feet are restless and my walk is falling apart....but my eyesight is back to normal.”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        This does not prove a specific diagnosis for the feet. It does show that, within months of the admission, Neurology’s treatment regime was reported to alter both gait/tension and the feet — making medication–lower-limb interaction a live interpretive question.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage reassignment">
+      <div class="tag">9 · Pain crisis — March 2023</div>
+      <h2>The later pain episode is severe, bilateral, psychologically dangerous — and occurs despite maximum-dose Lyrica</h2>
+      <div class="source-grid">
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Urgent GP referral</span>
+            <span class="ref">CLIN-002635–002640</span>
+          </div>
+          <blockquote>“over recent weeks with severe bilateral ‘burning’ both feet and lower legs and pain.”<br><br>“Says extreme at time and causing death wish.”<br><br>“…200mg tds and says this is only just now controlling the symptoms!”</blockquote>
+        </article>
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Movement-disorders nurse email</span>
+            <span class="ref">CLIN-002681–002684</span>
+          </div>
+          <blockquote>“currently taking 600mgs of Lyrica a day.”<br><br>“Despite the Lyrica he states he is having debilitating pain and has no quality of life worsening over the last number of months.”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The contemporaneous record does not support treating “Lyrica helped” as a clean or sufficient causal explanation by itself: severe and psychologically destabilising pain is documented while pregabalin is already at 600 mg/day.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage signal">
+      <div class="tag">10 · The 2025 contradiction is recorded in the same clinical note</div>
+      <h2>Severe morning foot pain, dopaminergic relief, neuropathy possibility and painful dystonia all coexist</h2>
+      <div class="source-grid">
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Neurology note — lived severity</span>
+            <span class="ref">CLIN-002777–002780</span>
+          </div>
+          <blockquote>“Each morning it feels like ‘murder in the feet’…”<br><br>“The first 150 footsteps are torture.”<br><br>“To say ‘I won’t live with it’ allows him put words on the situation.”<br><br>“Once the Parkinsons medications hit his system he does have a relief in the feelings in the feet.”</blockquote>
+        </article>
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Neurology impression</span>
+            <span class="ref">CLIN-002783–002793</span>
+          </div>
+          <blockquote class="small">“If there is a degree of peripheral neuropathy here…”<br><br>“He knows very well that once the Sinemet hits his system that the feet feel better from a pain perspective.”<br><br>“Certainly if person has dystonia a person can have painful dystonia. However, the type of pain that he is describing is not a direct Parkinson's phenomenology.”<br><br>“there would be the option on giving him a slow release Sinemet at night time?”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The note contains the contradiction rather than hiding it: severe foot pain is temporally relieved by Parkinson’s medication, painful dystonia is acknowledged as a category, yet the described pain remains outside the clinician’s direct Parkinsonian formulation and possible peripheral neuropathy remains available.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage reassignment">
+      <div class="tag">11 · Complaint stage — March 2025</div>
+      <h2>The patient asks for the reasoning process itself to be examined</h2>
+      <div class="source-grid">
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Formal complaint — systemic framing</span>
+            <span class="ref">CLIN-003467–003478</span>
+          </div>
+          <blockquote class="small">“This raises a fundamental question: Why was this possibility not explored earlier, given the magnitude of harm endured?”<br><br>“I make no presumptions about individual intent or malice. My concern is systemic…”<br><br>“An independent review of my case, with attention to the clinical reasoning applied from 2017 to 2025.”</blockquote>
+        </article>
+        <article class="quote-card">
+          <div class="source-head">
+            <span class="source-label">Consultant complaint response</span>
+            <span class="ref">CLIN-003263–003268A</span>
+          </div>
+          <blockquote class="small">“his Lyrica pregabalin treatment introduced for the neuropathic pain (of whatever cause)…”<br><br>“his Lyrica treatment (admittedly with incomplete effect at maximum dose) was self reduced; his pain deteriorated…”<br><br>“Sinemet CR … has provided him with profound relief currently.”<br><br>“I’m not sure that this would qualify as ‘Diagnostic Anchoring, Bias, and Failure to Reassess (2017–2025)’?”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        The complaint asks for an independent review of how the clinical reasoning developed across eight years. The response substantially explains treatment choices, pregabalin, levodopa caution and later relief. The documentary question is whether that downstream explanation resolves the earlier classification event in 2017 — particularly the observed dystonic lower-limb sign and the separate neuropathy hypothesis.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage confirmation">
+      <div class="tag">12 · Later confirmation — February 2026</div>
+      <h2>The eventual genetic result confirms PRKN Parkinsonism with dystonia</h2>
+      <div class="source-grid">
+        <article class="quote-card full">
+          <div class="source-head">
+            <span class="source-label">St Vincent’s University Hospital — genetic results letter</span>
+            <span class="ref">CLIN-003226–003228</span>
+          </div>
+          <blockquote>“They confirm that he has two pathogenic variants in the Parkin gene as predicted. His Parkinsonism and dystonia are due to compound heterozygous mutations in the Parkin gene.”</blockquote>
+        </article>
+      </div>
+      <div class="implication">
+        <b>Documentary implication</b>
+        This later result confirms that dystonia belongs to the patient’s PRKN disease. It does not retrospectively classify every episode of foot pain. Its relevance to the sequence is narrower: the disease ultimately confirmed includes the same category of lower-limb phenomenon that Neurology had already described as dystonic-looking in 2017.
+      </div>
+    </section>
+
+    <div class="arrow">↓</div>
+
+    <section class="stage sequence-line">
+      <div class="tag">Documentary sequence</div>
+      <h2>GP trajectory → hospital compression → long history recovered → dystonic lower-limb sign observed → residual lower-limb material assigned a possible separate neuropathy explanation → PRKN remains the principal phenotype while PARK9 enters through “the neuropathy question” → later treatment-linked foot/gait signals are interpreted inside the established separation → severe pain persists despite high-dose Lyrica → Sinemet-linked relief is documented while the neuropathy possibility remains available → complaint asks how the reasoning persisted → response explains the downstream management → 2026 confirms PRKN Parkinsonism + dystonia.</h2>
+    </section>
+
+    <section class="callout analysis-only">
+      <strong>What this evidence map does — and does not — claim</strong>
+      It demonstrates a traceable documentary mechanism: information compression, later recovery, a new dystonic finding, subsequent separation of residual symptoms under a possible neuropathy explanation, and persistence of that dual-track framework. It does not substitute for an independent clinical expert opinion on whether any particular historical pain episode was dystonic, neuropathic, musculoskeletal, mixed, or otherwise.
+    </section>
+  </main>
+
+  <footer>Source basis: the supplied canonical clinical record. Quotations retain source wording and are keyed to the record’s CLIN reference numbers.</footer>
+</div>
+
+<script>
+(() => {
+  const root = document.getElementById('root');
+  const a = document.getElementById('toggleAnalysis');
+  const d = document.getElementById('toggleDensity');
+  const p = document.getElementById('printBtn');
+
+  a.addEventListener('click', () => {
+    root.classList.toggle('analysis-hidden');
+    a.textContent = root.classList.contains('analysis-hidden')
+      ? 'Show documentary implications'
+      : 'Hide documentary implications';
+  });
+  d.addEventListener('click', () => {
+    root.classList.toggle('compact');
+    d.textContent = root.classList.contains('compact')
+      ? 'Comfortable view'
+      : 'Compact view';
+  });
+  p.addEventListener('click', () => window.print());
+})();
+</script>
+</body>
+</html>
