@@ -205,6 +205,66 @@ blockquote.small{font-size:16px}
 .compact .arrow{height:26px}
 .compact blockquote{font-size:16px}
 .compact .quote-card{padding:11px 12px}
+
+.context-details{
+  margin-top:13px;
+  border-top:1px solid var(--rule);
+  padding-top:10px;
+}
+.context-details summary{
+  list-style:none;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  cursor:pointer;
+  color:var(--context);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.02em;
+  user-select:none;
+}
+.context-details summary::-webkit-details-marker{display:none}
+.context-details summary::after{
+  content:"▾";
+  font-size:11px;
+  transition:transform .16s ease;
+}
+.context-details[open] summary::after{transform:rotate(180deg)}
+.info-icon{
+  display:inline-grid;
+  place-items:center;
+  width:20px;
+  height:20px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  font:800 12px/1 Georgia,"Times New Roman",serif;
+}
+.context-body{
+  margin-top:10px;
+  padding:12px 13px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid var(--rule);
+  font-size:13px;
+  color:#3f4650;
+}
+.context-body p{margin:0 0 9px}
+.context-body p:last-child{margin-bottom:0}
+.context-body strong{
+  color:var(--ink);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.055em;
+}
+.context-open-all{
+  border-color:#b8c2cf;
+}
+@media print{
+  .context-details{display:block}
+  .context-details > summary{display:none}
+  .context-details:not([open]) .context-body{display:block}
+}
+
 footer{
   text-align:center;
   margin-top:18px;
@@ -242,6 +302,7 @@ footer{
   <div class="controls">
     <button type="button" id="toggleAnalysis">Hide documentary implications</button>
     <button type="button" id="toggleDensity">Compact view</button>
+    <button type="button" id="toggleContexts" class="context-open-all">Open all quote context</button>
     <button type="button" id="printBtn">Print / Save as PDF</button>
   </div>
 
@@ -257,6 +318,14 @@ footer{
             <span class="ref">CLIN-000856–000861</span>
           </div>
           <blockquote>“Over recent weeks It has become increasingly evident that he is having trouble initiating movements at times and also has marked stiffness and increased tone in both upper and lower limbs…”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The referral first says the GP had already noticed an unusual festinant, stiff gait when the patient attended with bilateral foot problems and attributed the gait to corns and callouses. The quoted passage then introduces the newly evident difficulty initiating movement, increased tone and toe-clawing.</p>
+    <p><strong>How it folds back</strong> Foot problems, gait abnormality, muscle tension and emerging Parkinsonian signs enter the hospital pathway together. The later separation of lower-limb symptoms therefore has to be read against an initially combined presentation, not as though the foot history arose only after Parkinsonism had been identified.</p>
+    <p><strong>Limit</strong> The GP was not diagnosing dystonia or neuropathy here; the referral records a deteriorating syndrome requiring assessment.</p>
+  </div>
+</details>
         </article>
         <article class="quote-card">
           <div class="source-head">
@@ -264,6 +333,14 @@ footer{
             <span class="ref">CLIN-000866–000881</span>
           </div>
           <blockquote>“Of late though he feels his dexterity is worse…”<br><br>“My concerns are that there are definite signs of increased tone here with abnormal gait and now affecting his employment and daily activities - ?parkinsonian or other underlying diagnosis but certainly seems to be deteriorating.”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The GP describes increasing difficulty gowning for work, worsening dexterity and loss of abilities previously taken for granted. The same referral records that the patient had initially attributed some signs to anxiety and mentions past alcohol use.</p>
+    <p><strong>How it folds back</strong> Alcohol is already present in the history, but the GP does not use it to close the neurological question. The referral remains explicitly open — “?parkinsonian or other underlying diagnosis” — and is driven by deterioration and functional loss.</p>
+    <p><strong>Limit</strong> The quotation does not establish the cause of the deterioration; it establishes the nature and urgency of the referral question.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -284,6 +361,14 @@ footer{
             <span class="ref">CLIN-000940–000943</span>
           </div>
           <blockquote>“Reason: 39Y/O WITH DIFFICULTY INITIATING MOVEMENT, INCREASED TONE AND STIFFNESS IN ALL 4 LIMBS, COGWHEELING AT THE WRIST. PLEASE … ASSESS FOR NEURO OPINION AND ADVICE…”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> This short “Reason” field appears inside the later hospital summary. Crucially, the document does not stop there: immediately afterwards it reconstructs a possible 13-year history, including body tension, gait, writing, balance and dexterity.</p>
+    <p><strong>How it folds back</strong> The point is therefore not that Neurology never recovered the missing history. It did. The significance of the compression is that the administrative referral problem arriving at the service is much narrower than the GP’s longitudinal question; the detailed history has to be reconstructed later inside an investigation already organised around Parkinsonism.</p>
+    <p><strong>Limit</strong> This is evidence of information compression at the referral-field level, not evidence that the later clinician was unaware of the broader history.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -304,6 +389,14 @@ footer{
             <span class="ref">CLIN-000971–000976</span>
           </div>
           <blockquote>“the pain in the feet … reduced to a degree ‘out of the picture’ — however he continued to have the ‘leg tension’…”<br><br>“he began to realise that the foot pain and the leg tenston were not the same problem…”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The history first records corns, callouses, fallen arches and treatment of the feet from around 2009–2010. After leaving bar work in 2012, the foot pain became much less prominent while the leg tension remained.</p>
+    <p><strong>How it folds back</strong> The patient’s distinction is specifically between the painful/structural foot problem and the persistent leg-tension phenomenon. Later, that distinction becomes part of the reasoning used to support separation of the residual symptoms. The distinction is real; the diagnostic use subsequently made of it is a separate step.</p>
+    <p><strong>Limit</strong> This is retrospective symptom history as reported in 2017. It does not itself classify either component neurologically.</p>
+  </div>
+</details>
         </article>
         <article class="quote-card">
           <div class="source-head">
@@ -311,6 +404,14 @@ footer{
             <span class="ref">CLIN-000979–000985</span>
           </div>
           <blockquote>“this just made the tension worse…”<br><br>“Thereafter he started to notice that: ‘the legs would lift off the floor as I sat down’”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The patient reports that substantial aerobic exercise and weight loss did not relieve the tension; it worsened it. He then describes the legs lifting from the floor while seated. The next line records alcohol being used to help sleep and relax.</p>
+    <p><strong>How it folds back</strong> This places a movement/postural quality beside the longstanding “tension” before alcohol is discussed as a de-tensioning strategy. Later records can therefore be read in two directions: alcohol is a possible contributor to neuropathic symptoms, but within the original history it is also described as something used in response to the pre-existing tension.</p>
+    <p><strong>Limit</strong> Neither the unusual leg movement nor alcohol use proves the mechanism of the lower-limb symptoms.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -331,6 +432,14 @@ footer{
             <span class="ref">CLIN-001097–001100</span>
           </div>
           <blockquote>“The gait is strikingly abnormal.”<br><br>“He tends to walk almost with a footdrop appearance somewhat suggestive of a dystonic posture - NOT FOOT DROP.”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> This finding sits within a neurological examination already documenting markedly symmetrical increased tone, brisk reflexes, very little tremor and reduced blink rate. It is followed by absent arm swing and Parkinsonian upper-limb posturing during gait.</p>
+    <p><strong>How it folds back</strong> Unlike the historical symptom descriptions, this is generated by direct neurological examination. It supplies a new piece of evidence — a dystonic-looking lower-limb posture — at the very point when the longstanding trajectory is being reconstructed.</p>
+    <p><strong>Limit</strong> The wording is deliberately qualified: “somewhat suggestive.” It is evidence of an observed dystonic appearance, not a formal standalone diagnosis of lower-limb dystonia.</p>
+  </div>
+</details>
         </article>
         <article class="quote-card">
           <div class="source-head">
@@ -338,6 +447,14 @@ footer{
             <span class="ref">CLIN-001108–001115</span>
           </div>
           <blockquote>“Lead pipe rigidity bilaterally”<br><br>“Gross rigidity evident while walking - axial rigidity”<br><br>“LLL Kicks out like a foot drop -”<br><br>“Gross bradykinesia”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The “LLL kicks out” description sits between bilateral lead-pipe rigidity, gross axial rigidity while walking and gross bradykinesia. The same examination had already described the gait as suggestive of a dystonic posture rather than true foot drop.</p>
+    <p><strong>How it folds back</strong> The lower-limb sign is therefore embedded within the Parkinsonian examination rather than recorded as an isolated orthopaedic or peripheral-nerve observation. That makes its later lack of integration with the longstanding lower-limb history the central documentary question.</p>
+    <p><strong>Limit</strong> “Kicks out like a foot drop” is descriptive wording. The record does not show a completed diagnostic investigation of that specific sign at this point.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -358,6 +475,14 @@ footer{
             <span class="ref">CLIN-001142–001149</span>
           </div>
           <blockquote>“The leg symptoms including corns and callouses and burning may have been completely separate or perhaps a secondary peripheral neuropathy perhaps in some … respect related to the significant original alcohol intake?”<br><br>“However he has in his own mind - markedly divorced the feelings of tension in the legs which was/is the predominant problem -from the ‘corns and callouses’ issues and Pains in the feet…”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> Immediately before this paragraph the impression is a broad young-onset Parkinsonism differential and the DAT scan addendum records marked bilateral truncation of uptake. Immediately afterwards the plan returns to complex-case review, recessive neurogenetics, DAT imaging and MRI.</p>
+    <p><strong>How it folds back</strong> The neuropathy wording is therefore one hypothesis inside a much wider neurological impression. Its importance is not that it was stated with certainty — it was not — but that it supplied a separate explanatory destination for the residual leg/foot material while the Parkinsonism investigation proceeded on its own track.</p>
+    <p><strong>Limit</strong> The author explicitly writes “may have been,” “perhaps” and “Not clear.” This passage supports the existence of a neuropathy hypothesis; it does not establish that peripheral neuropathy was demonstrated.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -378,6 +503,14 @@ footer{
             <span class="ref">CLIN-001520–001523</span>
           </div>
           <blockquote>“given … his very young age of onset; the akinetic rigidity; the lack of a Dominant family history; and the marked symmetry; as well as how cognitively excellent [Patient] is, there is a question of whether the indicators are that he does have a PRKN gene disorder (PARK 2)?”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The clinician is explaining autosomal-recessive (“weak genetics”) disease: a genetic disorder can occur without a dominant family pattern and may affect few or no other family members.</p>
+    <p><strong>How it folds back</strong> PRKN/PARK2 is then raised from a specific cluster — very young onset, akinetic rigidity, lack of dominant family history, marked symmetry and preserved cognition. Those are features of the core Parkinsonian phenotype, not consequences of the later neuropathy hypothesis.</p>
+    <p><strong>Limit</strong> In 2017 this is explicitly a question to be tested, not a confirmed genetic diagnosis.</p>
+  </div>
+</details>
         </article>
         <article class="quote-card">
           <div class="source-head">
@@ -385,6 +518,14 @@ footer{
             <span class="ref">CLIN-001524–001525</span>
           </div>
           <blockquote>“Nevertheless aspects may point to rarer monogenic explanations such as PARK 6 or PARK7 or even PARK 9 (the neuropathy question).”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> This sentence follows immediately after the PRKN/PARK2 question. The text then moves into a general discussion of available genetic testing.</p>
+    <p><strong>How it folds back</strong> The parenthetical phrase “the neuropathy question” shows exactly how the separate lower-limb hypothesis enters the genetics discussion: PRKN is generated by the main phenotype; PARK9 appears because neuropathy has been left available as an additional feature requiring explanation.</p>
+    <p><strong>Limit</strong> The sentence does not quantify how likely PARK9 was, and it does not turn the neuropathy question into a proven neuropathy.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -405,6 +546,14 @@ footer{
             <span class="ref">CLIN-001741–001742</span>
           </div>
           <blockquote>“Thank you for asking me to see this man who I think probably has Park II and I would suggest testing that initially. If it is negative I would go on to test a panel.”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> Prof Healy’s letter follows a specialist review in September 2017. In the same letter he places onset between the late 20s and early 30s, records dramatic motor improvement with procyclidine and rasagiline, and discusses the characteristic treatment sensitivity of PARK2.</p>
+    <p><strong>How it folds back</strong> This is independent specialist convergence on the same PARK2 hypothesis already present in the Galway record. It matters because the PRKN line of reasoning survives external review without needing the neuropathy hypothesis.</p>
+    <p><strong>Limit</strong> The available transcription is partial, and this letter does not determine the cause of the historical foot pain.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -425,6 +574,14 @@ footer{
             <span class="ref">CLIN-001770–001783</span>
           </div>
           <blockquote>“My walk is back together.”<br>“My legs are loose and limber.”<br><br>Four days into the treatment break: “I am feeling the tension building up, my feet are restless and my walk is falling apart....but my eyesight is back to normal.”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> This was written contemporaneously during a planned procyclidine/Kemadrin treatment break. Before withdrawal the patient records broad functional improvement — walking, posture, dexterity and looseness of the legs. Four days off treatment, tension, foot restlessness and gait deterioration return while the visual adverse effect improves.</p>
+    <p><strong>How it folds back</strong> The feet, tension and gait move together during an actual treatment manipulation only months after the 2017 separation was created. That does not settle the diagnosis, but it creates a reason to ask whether the feet belong entirely outside the movement-disorder frame.</p>
+    <p><strong>Limit</strong> Procyclidine is not levodopa, and treatment response is not a diagnostic test. The evidential point is the contemporaneous coupling of lower-limb and motor change.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -445,6 +602,14 @@ footer{
             <span class="ref">CLIN-002635–002640</span>
           </div>
           <blockquote>“over recent weeks with severe bilateral ‘burning’ both feet and lower legs and pain.”<br><br>“Says extreme at time and causing death wish.”<br><br>“…200mg tds and says this is only just now controlling the symptoms!”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The GP marks the 2023 referral urgent. The burning syndrome is described as arising over recent weeks, bilateral in the feet and lower legs, and severe enough to cause a “death wish.” Pregabalin had risen from 25 mg twice daily to 200 mg three times daily. The GP also recalls an earlier pain episode that “suddenly” settled with better Parkinson’s control and writes, “Despite his facade, I don't think he is doing well.”</p>
+    <p><strong>How it folds back</strong> The referral simultaneously contains a neuropathic treatment pathway and a prior example of pain changing with Parkinson’s control. It is therefore an unusually clear point at which both explanatory tracks are present in the same document.</p>
+    <p><strong>Limit</strong> The abrupt severe bilateral burning syndrome in 2023 may not be identical in phenomenology to every earlier episode of foot pain. The page should not collapse those histories into one undifferentiated symptom.</p>
+  </div>
+</details>
         </article>
         <article class="quote-card">
           <div class="source-head">
@@ -452,6 +617,14 @@ footer{
             <span class="ref">CLIN-002681–002684</span>
           </div>
           <blockquote>“currently taking 600mgs of Lyrica a day.”<br><br>“Despite the Lyrica he states he is having debilitating pain and has no quality of life worsening over the last number of months.”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The nurse describes the pain with a question mark — “? neuropathic pain” — and records both 600 mg/day of Lyrica and continuing debilitating pain. The same message also records that the patient himself believed the pain was not Parkinson-related and had stopped Parkinson’s medication for ten days without noticing a Parkinsonian difference.</p>
+    <p><strong>How it folds back</strong> This is important counter-context. The later argument should not rewrite the patient as having always believed the pain was dopaminergic. At this stage he too was operating inside the separate-pain frame. At the same time, maximum-dose pregabalin had not produced a stable resolution.</p>
+    <p><strong>Limit</strong> A ten-day self-observation and a subjective impression do not by themselves establish or exclude a pain mechanism.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -472,6 +645,14 @@ footer{
             <span class="ref">CLIN-002777–002780</span>
           </div>
           <blockquote>“Each morning it feels like ‘murder in the feet’…”<br><br>“The first 150 footsteps are torture.”<br><br>“To say ‘I won’t live with it’ allows him put words on the situation.”<br><br>“Once the Parkinsons medications hit his system he does have a relief in the feelings in the feet.”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The same 2025 note first discusses dyskinesia, including visible left-foot movement. It then records the severe morning foot experience, the earlier reduction of Lyrica after psychological improvement, and immediately afterwards states that relief occurs once the Parkinson’s medication takes effect.</p>
+    <p><strong>How it folds back</strong> Pain severity, psychology, pregabalin reduction, left-foot movement and dopaminergic timing are all documented together. The evidential problem is therefore not a simple choice between “Lyrica worked” and “Sinemet worked”; several variables are interacting in the same period.</p>
+    <p><strong>Limit</strong> Temporal improvement after medication is important but does not, on its own, identify the biological cause of the pain.</p>
+  </div>
+</details>
         </article>
         <article class="quote-card">
           <div class="source-head">
@@ -479,6 +660,14 @@ footer{
             <span class="ref">CLIN-002783–002793</span>
           </div>
           <blockquote class="small">“If there is a degree of peripheral neuropathy here…”<br><br>“He knows very well that once the Sinemet hits his system that the feet feel better from a pain perspective.”<br><br>“Certainly if person has dystonia a person can have painful dystonia. However, the type of pain that he is describing is not a direct Parkinson's phenomenology.”<br><br>“there would be the option on giving him a slow release Sinemet at night time?”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> This is one continuous piece of clinical reasoning. It notes possible peripheral neuropathy, confirms prior maximum-dose Lyrica, acknowledges Sinemet-related foot relief, recognises painful dystonia as a phenomenon, predicts that more Sinemet would probably bring further relief, weighs dyskinesia risk, and then considers controlled-release Sinemet overnight.</p>
+    <p><strong>How it folds back</strong> The importance is precisely that the record contains both models at once. Dopaminergic responsiveness does not automatically displace the neuropathy frame because the clinician explains Sinemet as modifying the experience of pain from another cause. That explanatory move allows the original separation to persist despite a contradictory signal.</p>
+    <p><strong>Limit</strong> The clinician is not ignoring the response or refusing treatment; the note explicitly acknowledges the response and makes a risk-based management decision. The unresolved issue is classificatory: what evidential weight should that response have had against the longstanding neuropathy hypothesis?</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -499,6 +688,14 @@ footer{
             <span class="ref">CLIN-003467–003478</span>
           </div>
           <blockquote class="small">“This raises a fundamental question: Why was this possibility not explored earlier, given the magnitude of harm endured?”<br><br>“I make no presumptions about individual intent or malice. My concern is systemic…”<br><br>“An independent review of my case, with attention to the clinical reasoning applied from 2017 to 2025.”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> These lines come from the patient’s formal complaint. The complaint characterises the March 2025 Sinemet CR experience as immediate and sustained relief, identifies physical and psychological harm, explicitly disclaims assumptions about individual intent or malice, and asks for independent review of the reasoning from 2017–2025.</p>
+    <p><strong>How it folds back</strong> The complaint’s central question is not simply why one drug was not increased sooner. It asks how the diagnostic frame persisted and requests examination of the reasoning process that linked the 2017 classification to later management.</p>
+    <p><strong>Limit</strong> These are the patient’s contemporaneous contentions and requests. They prove what was put to the institution; they are not, by themselves, independent findings that the alleged mechanism occurred.</p>
+  </div>
+</details>
         </article>
         <article class="quote-card">
           <div class="source-head">
@@ -506,6 +703,14 @@ footer{
             <span class="ref">CLIN-003263–003268A</span>
           </div>
           <blockquote class="small">“his Lyrica pregabalin treatment introduced for the neuropathic pain (of whatever cause)…”<br><br>“his Lyrica treatment (admittedly with incomplete effect at maximum dose) was self reduced; his pain deteriorated…”<br><br>“Sinemet CR … has provided him with profound relief currently.”<br><br>“I’m not sure that this would qualify as ‘Diagnostic Anchoring, Bias, and Failure to Reassess (2017–2025)’?”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> The consultant’s response reaches back to the 2017 decision to delay levodopa in a young patient, then summarises later Sinemet use, dyskinesia risk, pregabalin for neuropathic pain, deterioration after pregabalin reduction and profound relief after Sinemet CR escalation.</p>
+    <p><strong>How it folds back</strong> This is a coherent explanation of downstream treatment management. The recursive question raised by the sequence is different: does explaining why Lyrica and Sinemet were used resolve how the dystonic-looking lower-limb sign and residual symptoms were first separated in 2017? The response says the historical letters contain the answer; that makes the original 2017 wording especially important.</p>
+    <p><strong>Limit</strong> The response is retrospective and defensive in context, but it also records genuine safety considerations around dyskinesia and dopamine-related complications. Those considerations should not be erased when analysing the classification question.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -526,6 +731,14 @@ footer{
             <span class="ref">CLIN-003226–003228</span>
           </div>
           <blockquote>“They confirm that he has two pathogenic variants in the Parkin gene as predicted. His Parkinsonism and dystonia are due to compound heterozygous mutations in the Parkin gene.”</blockquote>
+<details class="context-details">
+  <summary><span class="info-icon">i</span> Context & connection</summary>
+  <div class="context-body">
+    <p><strong>Immediate context</strong> This is the clinical conclusion of a February 2026 consultant genetic-results letter. It states that two pathogenic Parkin variants were found “as predicted” and attributes both Parkinsonism and dystonia to compound-heterozygous Parkin mutations.</p>
+    <p><strong>How it folds back</strong> The endpoint returns to the 2017 record: PRKN had been raised from the core phenotype, Prof Healy had independently favoured PARK2, and Neurology had directly observed a dystonic-looking lower-limb posture. The later result therefore confirms that dystonia belongs inside the confirmed PRKN disease rather than being a concept introduced only after the fact.</p>
+    <p><strong>Limit</strong> Genetic confirmation of PRKN-associated dystonia does not retrospectively prove that every historical painful sensation, corn, callus, burning episode or foot complaint was dystonic.</p>
+  </div>
+</details>
         </article>
       </div>
       <div class="implication">
@@ -556,6 +769,14 @@ footer{
   const a = document.getElementById('toggleAnalysis');
   const d = document.getElementById('toggleDensity');
   const p = document.getElementById('printBtn');
+  const c = document.getElementById('toggleContexts');
+
+  c.addEventListener('click', () => {
+    const details = [...document.querySelectorAll('.context-details')];
+    const shouldOpen = details.some(el => !el.open);
+    details.forEach(el => { el.open = shouldOpen; });
+    c.textContent = shouldOpen ? 'Close all quote context' : 'Open all quote context';
+  });
 
   a.addEventListener('click', () => {
     root.classList.toggle('analysis-hidden');
